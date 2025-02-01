@@ -52,13 +52,13 @@ const population_style = (feature) => {
 };
 
 // Load GeoJSON data (Make sure your GeoJSON file is correct)
-fetch("data/population.geojson")
+fetch("population.geojson")
     .then((response) => response.json())
     .then((data) => {
         let population = L.geoJSON(data, {
             style: population_style, // Apply style
             onEachFeature: (feature, layer) => {
-                layer.bindPopup(`Population: ${feature.properties.density}`);
+                layer.bindPopup(`Population: ${feature.properties.population}`);
             }
         }).addTo(map);
     })
